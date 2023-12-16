@@ -74,3 +74,8 @@ void Dialog::durationChanged(qint64 duration) {
     mDuration = duration / 1000;
     ui->horizontalSlider->setMaximum(mDuration);
 }
+
+void Dialog::changed(qint64 duration) {
+    if (!ui->horizontalSlider->isSliderDown()) ui->horizontalSlider->setValue(duration / 1000);
+    updateDuration(duration / 1000);
+}

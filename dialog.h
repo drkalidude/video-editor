@@ -37,11 +37,14 @@ private:
     bool isPause;
 
     void updateDuration(qint64 duration);
+    void setupVideoWidget();
+    void cropVideo();
 
 private slots:
     void on_pushButton_close_clicked();
     void on_pushButton_play_stop_clicked();
     void durationChanged(qint64 duration);
+    void changed(qint64 duration);
 
 };
 
