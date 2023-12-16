@@ -182,3 +182,23 @@ void MainWindow::on_verticalSlider_volume_valueChanged(int value)
 {
     player->setVolume(value);
 }
+
+void MainWindow::on_pushButton_up_clicked()
+{
+    QListWidgetItem *selectedItem = ui->videoListWidget->currentItem();
+    if (selectedItem) {
+        int currentIndex = ui->videoListWidget->row(selectedItem);
+        if (currentIndex > 0) {
+            QMediaContent currentItem = playlist->media(currentIndex);
+
+            playlist->removeMedia(currentIndex);
+
+            playlist->insertMedia(currentIndex - 1, currentItem);
+
+            updatePlaylistView();
+            updateVideoListOrder();
+            ui->videoListWidget->setCurrentItem(selectedItem);
+
+        } else {}
+    } else {}
+}
