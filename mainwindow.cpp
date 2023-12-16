@@ -136,3 +136,28 @@ int MainWindow::getVideoOrderNumber(const QString &fileName) const
     }
     return orderNumber;
 }
+
+void MainWindow::updateVideoListOrder()
+{
+    // Обновление порядка элементов в виджете списка
+    for (int i = 0; i < playlist->mediaCount(); ++i) {
+        QListWidgetItem *item = ui->videoListWidget->item(i);
+        if (item) {
+            QMediaContent media = playlist->media(i);
+            QUrl url = media.canonicalUrl();
+            QString fileName = url.fileName();
+            int orderNumber = getVideoOrderNumber(fileName);
+            QString displayText = QString("%1. %2").arg(orderNumber).arg(fileName);
+            item->setText(displayText);
+        }
+    }
+}
+
+void MainWindow::on_videoListWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    int clickedInex = ui->videoListWidget->row(item);
+    if (clickedInex >= 0 && clickedInex < playlist->mediaCount()) {
+        currentIndex = clickedInex;
+        playlist->setCurrentIndex(currentIndex);
+    }
+}

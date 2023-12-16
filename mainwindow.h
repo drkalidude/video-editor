@@ -36,6 +36,7 @@ private slots:
     void on_previousButton_clicked();
     void on_playPauseButton_clicked();
     void on_startStopButton_clicked();
+    void on_videoListWidget_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;
@@ -52,6 +53,7 @@ private:
     int getVideoOrderNumber(const QString &fileName) const;
     void setupVideoWidget();
     void updatePlaylistView();
+    void updateVideoListOrder();
 
 };
 
