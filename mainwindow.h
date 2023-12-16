@@ -42,6 +42,7 @@ private slots:
     void on_verticalSlider_volume_valueChanged(int value);
     void on_pushButton_up_clicked();
     void on_pushButton_down_clicked();
+    void on_videoListWidget_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

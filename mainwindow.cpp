@@ -230,3 +230,14 @@ void MainWindow::on_pushButton_down_clicked()
         qDebug() << "Выберите видео для перемещения вниз.";
     }
 }
+
+void MainWindow::on_videoListWidget_itemClicked(QListWidgetItem *item)
+{
+    int clickedIndex = ui->videoListWidget->row(item);
+        if (clickedIndex >= 0 && clickedIndex < playlist->mediaCount()) {
+            currentIndex = clickedIndex;
+            playlist->setCurrentIndex(currentIndex);
+            player->play();
+            ui->startStopButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
+        }
+}
