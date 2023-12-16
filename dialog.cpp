@@ -24,3 +24,13 @@ Dialog::~Dialog()
 {
     delete ui;
 }
+
+void Dialog::openVideoPlayerWindow(const QString &videoFilePath)
+{
+    video->setGeometry(5, 5, ui->groupBox_video->width() - 10, ui->groupBox_video->height() - 10);
+    player->setVideoOutput(video);
+    player->setMedia(QUrl::fromLocalFile(videoFilePath));
+    video->setParent(ui->groupBox_video);
+    video->show();
+    player->play();
+}
