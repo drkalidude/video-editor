@@ -58,9 +58,11 @@ private:
     QList<VideoData> videoDataList;
 
     int getVideoOrderNumber(const QString &fileName) const;
+    void onDialogClosed(const QString &label1Text, const QString &label2Text);
     void setupVideoWidget();
     void updatePlaylistView();
     void updateVideoListOrder();
+    void updateDuration(qint64 duration);
     void handleDialogClosed(const QString &startTime, const QString &endTime);
 
 };

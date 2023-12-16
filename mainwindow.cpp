@@ -275,3 +275,21 @@ void MainWindow::handleDialogClosed(const QString &startTime, const QString &end
     qDebug() << "Start Time: " << startTimeMs << "ms";
     qDebug() << "End Time: " << endTimeMs << "ms";
 }
+
+void MainWindow::updateDuration(qint64 duration) {
+    if (duration || mDuration) {
+        QTime currentTime((duration / 3600) % 60, (duration / 60) % 60, duration % 60, (duration * 1000) % 1000);
+        QTime totalTime((mDuration / 3600) % 60, (mDuration / 60) % 60, mDuration % 60, (mDuration * 1000) % 1000);
+        QString format = "";
+        if (mDuration > 3600) format = "hh:mm:ss";
+        else format = "mm:ss";
+
+        ui->label_time_now->setText(currentTime.toString(format));
+        ui->label_time_total->setText(totalTime.toString(format));
+    }
+}
+
+void MainWindow::onDialogClosed(const QString &label1Text, const QString &label2Text) {
+    qDebug() << "Label 1 Text: " << label1Text;
+    qDebug() << "Label 2 Text: " << label2Text;
+}
