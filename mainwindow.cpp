@@ -293,3 +293,38 @@ void MainWindow::onDialogClosed(const QString &label1Text, const QString &label2
     qDebug() << "Label 1 Text: " << label1Text;
     qDebug() << "Label 2 Text: " << label2Text;
 }
+
+void MainWindow::on_pushButton_render_clicked()
+{
+/*    if (currentIndex >= 0 && currentIndex < videoDataList.size()) {
+        const VideoData &currentVideo = videoDataList.at(currentIndex);
+
+        QString inputFilePath = currentVideo.filePath;
+        QTime startTime(0, 0);
+        QTime endTime(0, 0);
+        startTime = startTime.addMSecs(currentVideo.startTime);
+        endTime = endTime.addMSecs(currentVideo.endTime);
+
+        QString formattedStartTime = startTime.toString("hh:mm:ss");
+        QString formattedEndTime = endTime.toString("hh:mm:ss");
+
+        QString outputFilePath = "output_segment.mp4";
+
+        QString command = QString("ffmpeg -ss %1 -to %2 -i %3 -vcodec libx264 -acodec aac %4")
+                              .arg(formattedStartTime)
+                              .arg(formattedEndTime)
+                              .arg(inputFilePath)
+                              .arg(outputFilePath);
+
+        int result = std::system(command.toLocal8Bit().constData());
+
+        if (result == 0) {
+            qDebug() << "Rendering of segment completed successfully";
+        } else {
+            qDebug() << "Rendering of segment failed with exit code" << result;
+        }
+    } else {
+        qDebug() << "Invalid video index or video data list is empty";
+    }
+*/
+}

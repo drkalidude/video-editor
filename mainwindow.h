@@ -44,6 +44,7 @@ private slots:
     void on_pushButton_down_clicked();
     void on_videoListWidget_itemClicked(QListWidgetItem *item);
     void on_openVideoPlayerButton_clicked();
+    void on_pushButton_render_clicked();
 
 private:
     Ui::MainWindow *ui;
