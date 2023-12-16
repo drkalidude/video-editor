@@ -61,6 +61,7 @@ private:
     void setupVideoWidget();
     void updatePlaylistView();
     void updateVideoListOrder();
+    void handleDialogClosed(const QString &startTime, const QString &endTime);
 
 };
 

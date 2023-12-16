@@ -257,3 +257,21 @@ void MainWindow::on_openVideoPlayerButton_clicked()
         dialog->exec();
     }
 }
+
+void MainWindow::handleDialogClosed(const QString &startTime, const QString &endTime)
+{
+    QTime startTimeValue = QTime::fromString(startTime, "hh:mm:ss");
+    QTime endTimeValue = QTime::fromString(endTime, "hh:mm:ss");
+
+    qint64 startTimeMs = QTime(0, 0).msecsTo(startTimeValue);
+    qint64 endTimeMs = QTime(0, 0).msecsTo(endTimeValue);
+
+
+    if (currentIndex >= 0 && currentIndex < videoDataList.size()) {
+        videoDataList[currentIndex].startTime = startTimeMs;
+        videoDataList[currentIndex].endTime = endTimeMs;
+    }
+
+    qDebug() << "Start Time: " << startTimeMs << "ms";
+    qDebug() << "End Time: " << endTimeMs << "ms";
+}
