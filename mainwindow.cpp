@@ -199,6 +199,15 @@ void MainWindow::on_pushButton_up_clicked()
             updateVideoListOrder();
             ui->videoListWidget->setCurrentItem(selectedItem);
 
-        } else {}
-    } else {}
+
+            qDebug() << "Updated playlist order:";
+            for (int i = 0; i < playlist->mediaCount(); ++i) {
+                qDebug() << i << ": " << playlist->media(i).canonicalUrl().fileName();
+            }
+        } else {
+            qDebug() << "Выбранный элемент уже находится вверху списка.";
+        }
+    } else {
+        qDebug() << "Выберите видео для перемещения вверх.";
+    }
 }
