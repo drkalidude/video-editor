@@ -120,3 +120,19 @@ void MainWindow::updatePlaylistView()
         ui->videoListWidget->addItem(displayText);
     }
 }
+
+int MainWindow::getVideoOrderNumber(const QString &fileName) const
+{
+    // Получить порядковый номер файла в плейлисте
+    int orderNumber = 0;
+    for (int i = 0; i < playlist->mediaCount(); ++i) {
+        QMediaContent media = playlist->media(i);
+        QUrl url = media.canonicalUrl();
+        if (url.fileName() == fileName) {
+            orderNumber = i;
+            break;
+        }
+        
+    }
+    return orderNumber;
+}
