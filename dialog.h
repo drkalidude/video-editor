@@ -38,6 +38,7 @@ private:
 
 private slots:
     void on_pushButton_close_clicked();
+    void on_pushButton_play_stop_clicked();
 
 };
 
