@@ -39,6 +39,7 @@ private slots:
     void on_videoListWidget_itemDoubleClicked(QListWidgetItem *item);
     void on_mediaChanged(const QMediaContent &media);
     void on_pushButton_sound_clicked();
+    void on_verticalSlider_volume_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;

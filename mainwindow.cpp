@@ -177,3 +177,8 @@ void MainWindow::on_pushButton_sound_clicked()
     player->setMuted(isSound);
 
 }
+
+void MainWindow::on_verticalSlider_volume_valueChanged(int value)
+{
+    player->setVolume(value);
+}
