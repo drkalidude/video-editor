@@ -87,3 +87,17 @@ void MainWindow::on_previousButton_clicked()
     currentIndex = (currentIndex - 1 + playlist->mediaCount()) % playlist->mediaCount();
     playlist->setCurrentIndex(currentIndex);
 }
+
+void MainWindow::on_playPauseButton_clicked()
+{
+    if (isPause) {
+        player->play();
+        ui->startStopButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
+    }
+    else {
+        player->pause();
+        ui->startStopButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+    }
+
+    isPause = !isPause;
+}
