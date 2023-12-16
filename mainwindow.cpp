@@ -106,3 +106,17 @@ void MainWindow::on_startStopButton_clicked()
 {
     on_playPauseButton_clicked();
 }
+
+void MainWindow::updatePlaylistView()
+{
+    ui->videoListWidget->clear();
+
+    for (int i = 0; i < playlist->mediaCount(); ++i) {
+        QMediaContent media = playlist->media(i);
+        QUrl url = media.canonicalUrl();
+        QString fileName = url.fileName();
+        int orderNumber = getVideoOrderNumber(fileName);
+        QString displayText = QString("%1. %2").arg(orderNumber).arg(fileName);
+        ui->videoListWidget->addItem(displayText);
+    }
+}

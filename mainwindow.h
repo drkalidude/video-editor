@@ -35,6 +35,7 @@ private slots:
     void on_nextButton_clicked();
     void on_previousButton_clicked();
     void on_playPauseButton_clicked();
+    void on_startStopButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -49,6 +50,7 @@ private:
     QList<VideoData> videoDataList;
 
     void setupVideoWidget();
+    void updatePlaylistView();
 
 };
 
