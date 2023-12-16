@@ -37,6 +37,7 @@ private:
     bool isPause;
 
 private slots:
+    void on_pushButton_close_clicked();
 
 };
 
