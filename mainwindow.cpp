@@ -241,3 +241,19 @@ void MainWindow::on_videoListWidget_itemClicked(QListWidgetItem *item)
             ui->startStopButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
         }
 }
+
+void MainWindow::on_openVideoPlayerButton_clicked()
+{
+    QListWidgetItem *currentItem = ui->videoListWidget->currentItem();
+    if (currentItem) {
+        player->stop();
+        ui->startStopButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
+
+        QString videoFilePath = playlist->media(currentIndex).canonicalUrl().toLocalFile();
+
+        Dialog *dialog = new Dialog(this);
+        dialog->openVideoPlayerWindow(videoFilePath);
+        connect(dialog, &Dialog::dialogClosed, this, &MainWindow::handleDialogClosed);
+        dialog->exec();
+    }
+}
