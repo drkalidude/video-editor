@@ -49,6 +49,7 @@ private:
     bool isSound;
     QList<VideoData> videoDataList;
 
+    int getVideoOrderNumber(const QString &fileName) const;
     void setupVideoWidget();
     void updatePlaylistView();
 
