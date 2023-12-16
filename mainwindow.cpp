@@ -76,25 +76,14 @@ void MainWindow::on_addButton_clicked()
     }
 }
 
-void MainWindow::on_addButton_clicked()
+void MainWindow::on_nextButton_clicked()
 {
-    QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Video Files"), "", tr("Video Files (*.mp4 *.avi)"));
+    currentIndex = (currentIndex + 1) % playlist->mediaCount();
+    playlist->setCurrentIndex(currentIndex);
+}
 
-    if (!fileNames.isEmpty()) {
-        for (const QString &fileName : fileNames) {
-            playlist->addMedia(QUrl::fromLocalFile(fileName));
-        }
-
-        updatePlaylistView();
-        updateVideoListOrder();
-
-        // Если список был пуст, установите текущий индекс на первый добавленный файл
-        // Также исправим логику условия, чтобы она корректно учитывала уже существующие файлы
-        if (playlist->mediaCount() == fileNames.count()) {
-            currentIndex = 0;
-        } else {
-            currentIndex = playlist->mediaCount() - fileNames.count();
-        }
-        playlist->setCurrentIndex(currentIndex);
-    }
+void MainWindow::on_previousButton_clicked()
+{
+    currentIndex = (currentIndex - 1 + playlist->mediaCount()) % playlist->mediaCount();
+    playlist->setCurrentIndex(currentIndex);
 }

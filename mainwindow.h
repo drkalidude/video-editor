@@ -33,6 +33,7 @@ public:
 private slots:
     void on_addButton_clicked();
     void on_nextButton_clicked();
+    void on_previousButton_clicked();
 
 private:
     Ui::MainWindow *ui;
