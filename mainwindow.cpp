@@ -101,3 +101,8 @@ void MainWindow::on_playPauseButton_clicked()
 
     isPause = !isPause;
 }
+
+void MainWindow::on_startStopButton_clicked()
+{
+    on_playPauseButton_clicked();
+}
