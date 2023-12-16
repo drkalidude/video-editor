@@ -69,3 +69,8 @@ void Dialog::updateDuration(qint64 duration) {
         ui->label_time_total->setText(totalTime.toString(format));
     }
 }
+
+void Dialog::durationChanged(qint64 duration) {
+    mDuration = duration / 1000;
+    ui->horizontalSlider->setMaximum(mDuration);
+}
