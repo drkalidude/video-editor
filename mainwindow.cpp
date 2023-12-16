@@ -161,3 +161,19 @@ void MainWindow::on_videoListWidget_itemDoubleClicked(QListWidgetItem *item)
         playlist->setCurrentIndex(currentIndex);
     }
 }
+
+void MainWindow::on_mediaChanged(const QMediaContent &media) {
+    Q_UNUSED(media);
+    updatePlaylistView();
+    updateVideoListOrder();
+}
+
+void MainWindow::on_pushButton_sound_clicked()
+{
+    if(isSound == true) ui->pushButton_sound->setIcon(style()->standardIcon(QStyle::SP_MediaVolume));
+    else ui->pushButton_sound->setIcon(style()->standardIcon(QStyle::SP_MediaVolumeMuted));
+
+    isSound = !isSound;
+    player->setMuted(isSound);
+
+}
