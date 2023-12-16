@@ -35,6 +35,8 @@ private:
     QString videoFilePath;
     qint64 mDuration;
     bool isPause;
+    
+    void updateDuration(qint64 duration);
 
 private slots:
     void on_pushButton_close_clicked();
