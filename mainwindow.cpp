@@ -199,15 +199,34 @@ void MainWindow::on_pushButton_up_clicked()
             updateVideoListOrder();
             ui->videoListWidget->setCurrentItem(selectedItem);
 
+        } else {}
+    } else {}
+}
+
+void MainWindow::on_pushButton_down_clicked()
+{
+    QListWidgetItem *selectedItem = ui->videoListWidget->currentItem();
+    if (selectedItem) {
+        int currentIndex = ui->videoListWidget->row(selectedItem);
+        if (currentIndex < ui->videoListWidget->count() - 1) {
+            QMediaContent currentItem = playlist->media(currentIndex);
+
+            playlist->removeMedia(currentIndex);
+
+            playlist->insertMedia(currentIndex + 1, currentItem);
+
+            updatePlaylistView();
+            updateVideoListOrder();
+            ui->videoListWidget->setCurrentItem(selectedItem);
 
             qDebug() << "Updated playlist order:";
             for (int i = 0; i < playlist->mediaCount(); ++i) {
                 qDebug() << i << ": " << playlist->media(i).canonicalUrl().fileName();
             }
         } else {
-            qDebug() << "Выбранный элемент уже находится вверху списка.";
+            qDebug() << "Выбранный элемент уже находится внизу списка.";
         }
     } else {
-        qDebug() << "Выберите видео для перемещения вверх.";
+        qDebug() << "Выберите видео для перемещения вниз.";
     }
 }
